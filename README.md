@@ -1,124 +1,127 @@
 # PCC Day 4
 
-Chapter 5 covers if-statements
-• deciding on actions to take based on conditions 
+### Python Conditionals (Chapter 5)
 
+---
 
-### Chapter 5 Notes
+#### **Summary**  
+Conditional statements (`if`, `elif`, `else`) allow programs to make decisions based on Boolean logic (`True`/`False`). Key concepts include:  
+- **Operators**: Equality (`==`), inequality (`!=`), and numerical comparisons (`<`, `>`, `<=`, `>=`).  
+- **Logical Operators**: `and` (both conditions true), `or` (at least one condition true).  
+- **Membership Checks**: `in` (value exists in a list), `not in` (value absent from a list).  
+- **Case Sensitivity**: Strings are case-sensitive (use `.lower()` or `.upper()` for case-insensitive checks).  
+- **Boolean Flags**: Track state with `True`/`False` values.  
 
-if-statements is an expression can be evaluated as True or False –– called conditional 
+---
 
-checking for equality ––  determine if two values are equal two equal signs 'equality operator' (==) evaluate if the variable matches the value
-- equality operator is case sensitive -– "Pants" is not the same as "pants"
-    - methods can be attached to control entry if case sensitivity (not recommended for passwords) `pants.lower()` | `pants.upper()`
+### **Key Concepts**  
+#### 1. **Basic `if` Statements**  
+- Check equality with `==`:  
+  ```python
+  sneaker = "vomeros"
+  if sneaker == "vomeros":
+      print("Correct sneaker!")
+  ```  
+- **Case Sensitivity**:  
+  ```python
+  coat = "North Face"
+  if coat.lower() == "north face":  # Case-insensitive check
+      print("Match found.")
+  ```
 
-sneaker = "vomeros" <- value assigned to a variable
-sneaker == "vomeros" –– result: True 
+#### 2. **Inequality Checks**  
+- Use `!=` for "not equal":  
+  ```python
+  banned_user = "Logan"
+  if banned_user != "Tyson":
+      print("Access granted.")
+  ```
 
-`if sneaker == "vomeros":` ––> if starts the condition for a variables value to be evaluated.
+#### 3. **Numerical Comparisons**  
+- Compare numbers with `<`, `>`, `<=`, `>=`:  
+  ```python
+  age = 18
+  if age >= 21:
+      print("Allowed.")
+  else:
+      print("Denied.")
+  ```
 
-if statements –– conditional + action inside body
+#### 4. **Logical Operators**  
+- `and` (both conditions must be true):  
+  ```python
+  if (age >= 13) and (age <= 19):
+      print("Teenager.")
+  ```  
+- `or` (at least one condition true):  
+  ```python
+  if (day == "Saturday") or (day == "Sunday"):
+      print("Weekend!")
+  ```
 
-if value [condition]:
-    [action] ––> action must be indented 
+#### 5. **List Membership**  
+- Check if a value exists in a list with `in`/`not in`:  
+  ```python
+  usernames = ["CoolTableNerd", "PythonPro"]
+  if "Guest" not in usernames:
+      print("Username available.")
+  ```
 
-if value [condition]:
-    [action] 
-else: ––> semi-colon with the action indented underneath
-    [different action]
+#### 6. **Boolean Flags**  
+- Track program state:  
+  ```python
+  game_active = True
+  if game_active:
+      print("Game is running.")
+  ```
 
-checking for inequality –– determine if two values are NOT equal with inequality operator (!=)
-coat = "North Face" 
-coat == "Canada Goose" –– result: False
+#### 7. **`if-elif-else` Chains**  
+- Test multiple conditions in order:  
+  ```python
+  score = 85
+  if score >= 90:
+      print("A")
+  elif score >= 80:
+      print("B")
+  else:
+      print("C")
+  ```
 
-if coat != 'Canada Goose': 
-    print("wearing my North Face)
+---
 
-numerical comparison: comparing two numbers
+### **Project: User Registration System**  
+Build a program that validates user registrations using conditional checks.  
 
-answer = 12 ––> an answer submitted by user
-if answer != 24: ––> number in the condition does not need parenthesis or quotes 
-    print("your answer is wrong)
+#### **Requirements**  
+1. **Username Validation**:  
+   - Check if a username is already taken (case-insensitive).  
+   - Ensure it’s not in a banned list (e.g., `["admin", "root"]`).  
 
-age = 18
+2. **Age Verification**:  
+   - Deny registration if under 13.  
+   - Flag users aged 13–18 as minors.  
 
-if age == 18:
-    print("you are of age)
+3. **Admin Role**:  
+   - Allow only users with a secret code (`"2024Admin"`) to register as admins.  
 
-mathematical comparison can be included in conditional statements
-age = 21
+4. **Output**:  
+   ```python
+   Username: "CoolTableNerd" → "Username taken."
+   Age: 12 → "Registration denied. Minimum age: 13."
+   ```
 
-if age < 21: (less than sign)
-    print (true)
-else
-    print (false)    
+#### **Steps**  
+1. Define lists: `existing_users`, `banned_users`.  
+2. Use `input()` to collect username, age, and admin code.  
+3. Implement checks using `if`/`elif`/`else` and logical operators.  
 
-results: prints false. 21 is not less than 21. 
+---
 
-if age > 21: (greater than sign)
-    print(true)
-else
-    print(false)
-
-result: prints false. 21 is not greater than 21. 
-
-if age <= 21: (less than or equal to)
-    print(true)
-else:
-    print(false)
-
-result: prints true. 18 is less than 21
-
-if age >= 21: (greater than or equal to)
-    print(true)
-else: 
-    print(false)
-
-result: prints false. 18 is not greater than or equal to 21
-
-Multiple conditions can be checked at the same time using keywords `and` or `or`
-- the condition has to be included with both comparisons
-
-`and` –– both conditions need to be true. "today is Thursday AND the 6th of February
-
-age_0 = 8
-age_1 = 24
-
-if age_0 <= 7 or age_1 <= 10:
-    print(false) ––> prints false because one statement is false
-
-
-`or` –– only one of the conditions need to be true. "the grapes are green or purple"
-
-age_0 = 8
-age_1 = 24
-
-if age_0 >= 21 or age_1 >= 21:
-    print(true) ––> prints true because one statement is true. 
-
-checking if a list contains a certain value using the `in` keyword (RWE: checking if a new username already exist)
-
-userNames = ["CoolTableNerd","]
-
-if 'CoolTableNerd' in userNames: 
-    print("this userName is already in use")
-else: 
-    print("userName created")
-
-results: 'this userName is already in use' will be printed.
-
-checking if a list does not contain a certain value using the `not` keyword.
-
-bannedList = ["Logan", "Jake", "Hugan"]
-
-if 'Tyson' not in bannedList: 
-    print("you can proceed")
-else:
-    print("you are banned)
-
-Boolean values are used to keep track of certain conditions using `true `or `false`
-game_active = True
-can_edit = False 
-
-if-elif-else: run each conditional test in order until one passes 
-- Python does not require an else block at the end of an if-elif chain.
+### **Trivia Questions**  
+1. What operator checks if two values are equal, and how is it written?  
+2. Why does `"Python" == "python"` return `False`, and how can you fix it?  
+3. What is the difference between `and` and `or` in a conditional statement?  
+4. Write a condition to check if a number is between 10 and 20 (inclusive).  
+5. How would you check if the name `"Alice"` is **not** in a list called `guests`?  
+6. What keyword stops an `if-elif-else` chain once a condition is met?  
+7. What does `if not game_over:` imply if `game_over` is a Boolean?  
